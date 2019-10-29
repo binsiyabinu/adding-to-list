@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>strike</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style >
+       .tit{
+         border: none;
+         border-color: transparent;
+         font-size:25px;
+
+       }
+       ul{
+           margin-left:45%;
+           font-size:25px;
+       }
+       li:hover{
+         text-decoration:line-through;
+       }
+
+    </style>
+
+  </head>
+  <body>
+    <center>
+    <input type="text"  class="tit" id="ti"  placeholder="What need to be done?" />
+       </center>
+         <ul id=list>
+         </ul>
+
+
+    <script >
+      $('.tit').keypress(function(event){
+
+  	var keycode = (event.keyCode ? event.keyCode : event.which);
+  	if(keycode == '13'){
+            var element=document.getElementById("ti");
+            var b= document.getElementById("list");
+            var li = document.createElement("li");
+            li.setAttribute('id',"lists");
+            li.setAttribute('name',element.value);
+            li.appendChild(document.createTextNode(element.value));
+            b.appendChild(li);
+            element.value="";
+            $("#list").click(function(e){
+              $(e.target).remove();
+
+            });
+  	}
+
+  });
+
+
+  // $( "#list" ).mouseover(function() {
+//     var st=document.getElementById('lists');
+//     $(st).wrap("<strike>");
+// });
+
+    </script>
+  </body>
+</html>
